@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>走进流云 | 琉璃工艺传承</title>
+    <link rel="stylesheet" href="contents.css">
+    <script src="sidebar-component.js" defer></script>
+    <script src="header-nav.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="cloud.css">
+</head>
+<body>
+    <header-nav></header-nav>
+    <sidebar-menu></sidebar-menu>
+    
+    <main>
+        <div class="container">
+            <!-- 走进琉璃模块 -->
+            <div class="introduction content-block">
+                <div class="title">走进琉璃</div>
+                <div class="glowing-border">
+                    <h1>琉璃工艺传承</h1>
+                    <p>琉璃工艺传承千年，融合现代技术与传统美学，分为企业品牌定制和个人定制两大系列。企业定制可通过专属API接口，选择定制模型、建筑构件库、龙门云纹库等元素后入窑烧制；个人定制涵盖家具摆件、个人饰品等品类，可选择龙门云纹库、专属釉色后入窑烧制。此外，我们推出"龙门礼·琉云造"系列，让传统工艺焕发新生。</p>
+                </div>
+            </div>
+
+            <!-- 功能展示 -->
+            <div class="display content-block">
+                <div class="title">功能展示</div>
+                <div class="contend2 content-inner">
+                    <div class="features-wrapper">
+                        <div class="feature-desc">
+                            我们的琉璃定制平台融合传统工艺与现代科技，提供全方位的定制体验。从设计到成品，每一步都凝聚匠心。平台提供丰富的纹样库、材质选择和实时预览功能，让您的创意完美呈现。
+                        </div>
+                        <div class="features-container">
+                            <div class="feature-img">
+                                <img src="./images/gongneng1.jpg" alt="琉璃定制设计界面">
+                                <div class="feature-caption">琉璃定制设计系统</div>
+                            </div>
+                            <div class="feature-img">
+                                <img src="./images/gongneng2.jpg" alt="琉璃纹样库展示">
+                                <div class="feature-caption">传统纹样数字库</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 产品展示区域（圆形画廊） -->
+            <div class="product content-block">
+                <div class="title">龙门礼·琉云造</div>
+                
+                <div class="gallery-container">
+                    <div class="circular-gallery-wrapper">
+                        <div class="circular-gallery"></div>
+                    </div>
+                    <div class="detailed-content"></div>
+                </div>
+
+                <div class="navigation">
+                    <button id="prevBtn">上一个</button>
+                    <button id="nextBtn">下一个</button>
+                </div>
+            </div>
+
+            <!-- 互动体验 -->
+            <div class="interaction content-block">
+                <div class="title">互动体验</div>
+                <div class="contend4 content-inner">
+                    探索琉璃的世界，参与我们的互动体验，分享您与琉璃的故事，或亲自尝试定制属于自己的琉璃艺术品。
+                    <div class="btn-group">
+                        <button class="btn"><i class="fas fa-pen"></i> 分享故事</button>
+                        <button class="btn"><i class="fas fa-magic"></i> 开始体验</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 画廊脚本 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const items = [
+                {
+                    id: 1,
+                    imageUrl: './images/paibian.jpg',
+                    title: '琉璃牌匾',
+                    subtitle: '传统云纹装饰',
+                    description: '采用古法琉璃工艺，表面雕刻传统云纹图案，寓意吉祥如意，适用于厅堂装饰或礼品赠送。',
+                    buttonText: '查看详情',
+                    buttonLink: '#'
+                },
+                {
+                    id: 2,
+                    imageUrl: './images/liulidengzuo.jpg',
+                    title: '琉璃双耳瓶',
+                    subtitle: '造型典雅',
+                    description: '瓶身通透如玉，双耳设计对称美观，线条流畅，展现古典美学，是书房或陈列架的点睛之笔。',
+                    buttonText: '查看详情',
+                    buttonLink: '#'
+                },
+                {
+                    id: 3,
+                    imageUrl: './images/chaju.jpg',
+                    title: '琉璃茶具套装',
+                    subtitle: '晶莹剔透',
+                    description: '整套包含茶壶与茶杯，质地晶莹剔透，泡茶时可观茶汤色泽，兼具实用与观赏价值。',
+                    buttonText: '查看详情',
+                    buttonLink: '#'
+                },
+                {
+                    id: 4,
+                    imageUrl: './images/xianglu.jpg',
+                    title: '琉璃香炉',
+                    subtitle: '纹饰精美',
+                    description: '炉身雕刻缠枝莲纹，盖面镂空设计，焚香时烟气袅袅，兼具实用功能与艺术收藏价值。',
+                    buttonText: '查看详情',
+                    buttonLink: '#'
+                }
+            ];
+
+            let activeIndex = 0;
+            const numItems = items.length;
+
+            const circularGalleryEl = document.querySelector('.product .circular-gallery');
+            const detailedContentEl = document.querySelector('.product .detailed-content');
+            const prevBtn = document.querySelector('.product #prevBtn');
+            const nextBtn = document.querySelector('.product #nextBtn');
+
+            function getPositionClass(index, activeIndex, totalItems) {
+                const diff = index - activeIndex;
+                const wrappedDiff = (diff % totalItems + totalItems) % totalItems;
+
+                if (wrappedDiff === 0) return 'active';
+                if (wrappedDiff === 1) return 'right-1';
+                if (wrappedDiff === totalItems - 1) return 'left-1';
+                if (wrappedDiff === 2) return 'right-2';
+                if (wrappedDiff === totalItems - 2) return 'left-2';
+                return 'hidden-item';
+            }
+
+            function renderCircularGallery() {
+                if (!circularGalleryEl) return;
+                circularGalleryEl.innerHTML = '';
+
+                items.forEach((item, index) => {
+                    const itemEl = document.createElement('div');
+                    itemEl.classList.add('gallery-item');
+                    itemEl.dataset.index = index;
+                    itemEl.innerHTML = `<img src="${item.imageUrl}" alt="${item.title}">`;
+
+                    itemEl.addEventListener('click', () => {
+                        const clickIndex = parseInt(itemEl.dataset.index, 10);
+                        if (clickIndex !== activeIndex) {
+                            activeIndex = clickIndex;
+                            updateGallery();
+                        }
+                    });
+
+                    circularGalleryEl.appendChild(itemEl);
+                });
+                updateGallery();
+            }
+
+            function updateGallery() {
+                if (!detailedContentEl || !circularGalleryEl) return;
+
+                detailedContentEl.classList.remove('visible');
+                setTimeout(() => {
+                    const currentItem = items[activeIndex];
+                    detailedContentEl.innerHTML = `
+                        <img src="${currentItem.imageUrl}" alt="${currentItem.title}">
+                        <h2>${currentItem.title}</h2>
+                        <h3>${currentItem.subtitle}</h3>
+                        <p>${currentItem.description}</p>
+                        <a href="${currentItem.buttonLink}" class="cta-button" style="
+                            display: inline-block;
+                            margin-top: 1rem;
+                            padding: 10px 20px;
+                            background: linear-gradient(90deg, #4a90e2, #50e3c2);
+                            color: white;
+                            border-radius: 6px;
+                            text-decoration: none;
+                            transition: all 0.3s ease;
+                        ">${currentItem.buttonText}</a>
+                    `;
+                    detailedContentEl.classList.add('visible');
+                }, 200);
+
+                const galleryItems = circularGalleryEl.querySelectorAll('.gallery-item');
+                galleryItems.forEach((itemEl, index) => {
+                    itemEl.classList.remove('active', 'left-1', 'right-1', 'left-2', 'right-2', 'hidden-item');
+                    const positionClass = getPositionClass(index, activeIndex, numItems);
+                    itemEl.classList.add(positionClass);
+                });
+            }
+
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    activeIndex = (activeIndex - 1 + numItems) % numItems;
+                    updateGallery();
+                });
+            }
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    activeIndex = (activeIndex + 1) % numItems;
+                    updateGallery();
+                });
+            }
+
+            renderCircularGallery();
+        });
+    </script>
+</body>
+</html>
